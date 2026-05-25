@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Usuarios | Tech Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(8, 18, 35, 0.85), rgba(8, 18, 35, 0.85)),
+        url("https://cdn.discordapp.com/attachments/877339127165620225/1470328699395244224/ciudad-por-la-noche-estilo-anime-5480.png?ex=698ae5cf&is=6989944f&hm=50b86713cfb846e70be29c1dc1513798c6ec91e03437aa4b81e43128d6f9edb7&");
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+    }
+
+    
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 60px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      background: #f7931e;
+      border-radius: 50%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 4px;
+      padding: 6px;
+    }
+
+    .logo-icon span {
+      background: #0b1a30;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .title {
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    .users {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      padding: 60px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .user-card {
+      text-align: center;
+    }
+
+    .user-card img {
+      width: 100%;
+      max-width: 260px;
+      border-radius: 14px;
+      margin-bottom: 22px;
+      filter: drop-shadow(0 20px 35px rgba(0,0,0,0.6));
+    }
+
+    .role {
+      font-size: 18px;
+      opacity: 0.85;
+      margin-bottom: 6px;
+    }
+
+    .name {
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .name.lower {
+      text-transform: none;
+    }
+
+    @media (max-width: 1100px) {
+      .users {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .title {
+        font-size: 42px;
+      }
+
+      .users {
+        grid-template-columns: 1fr;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
+      <div class="logo-text">techcontrol</div>
+    </div>
+
+    <div class="title">USUARIOS</div>
+  </header>
+
+  <section class="users">
+
+    <div class="user-card">
+      <img src="https://cdn.discordapp.com/attachments/877339127165620225/1470337014351134865/ChatGPT_Image_9_feb_2026_03_34_06_a.m..png?ex=698aed8d&is=69899c0d&hm=55cc224b405dba34ca5865260509ab78bc3c538e175d4d2eb17b1cc878074ed6&" alt="Administrador">
+      <div class="role">Administrador</div>
+      <div class="name lower">jorge mendez</div>
+    </div>
+
+    <div class="user-card">
+      <img src="https://cdn.discordapp.com/attachments/877339127165620225/1470342729522216970/ChatGPT_Image_9_feb_2026_03_56_42_a.m..png?ex=698af2e0&is=6989a160&hm=08f815d16ad7f4c9237658a24d90e23340d178f4574a4acfcedf9107b76ae4dc&" alt="Piloto">
+      <div class="role">Piloto</div>
+      <div class="name">SEBASTIAN</div>
+    </div>
+
+    <div class="user-card">
+      <img src="https://cdn.discordapp.com/attachments/877339127165620225/1470339529859928176/ChatGPT_Image_9_feb_2026_03_43_52_a.m..png?ex=698aefe5&is=69899e65&hm=7495650f55d090c312860034682f06eb55905a2522d379662b5aaff3dd2fd625&" alt="Analista">
+      <div class="role">Analista de Inventario</div>
+      <div class="name"></div>
+    </div>
+
+    <div class="user-card">
+      <img src="https://cdn.discordapp.com/attachments/877339127165620225/1470341846529216617/ChatGPT_Image_9_feb_2026_03_51_08_a.m..png?ex=698af20d&is=6989a08d&hm=7d91f783c111b1816464bc08ffb06682caf92c85c61d790e4c05d5ccbd5d694d&" alt="Técnico">
+      <div class="role">Técnico en Mantenimiento</div>
+      <div class="name"></div>
+    </div>
+
+  </section>
+
+</body>
+</html>

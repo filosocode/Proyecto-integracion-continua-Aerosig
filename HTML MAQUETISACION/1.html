@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Tech Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(6, 24, 44, 0.75), rgba(6, 24, 44, 0.75)),
+        url("https://cdn.discordapp.com/attachments/877339127165620225/1470344948204306485/Gemini_Generated_Image_pn1pu3pn1pu3pn1p.png?ex=698af4f1&is=6989a371&hm=ffddff72d5de92d3da91d0f496380c98e56d37694917c61f5f2a613523a14cf8&");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #0b2a4a;
+    }
+
+    .login-wrapper {
+      width: 100%;
+      max-width: 460px;
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px 34px 36px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45);
+    }
+
+    /* HEADER */
+    .top {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .top .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .drone-icon {
+      width: 34px;
+      height: 34px;
+      background: #0b5fa5;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .top h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #0b5fa5;
+    }
+
+    .top p {
+      font-size: 14px;
+      color: #5b6f82;
+    }
+
+    /* FORM */
+    h2 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 22px;
+      color: #0b2a4a;
+    }
+
+    .field {
+      display: flex;
+      align-items: center;
+      border: 1px solid #cfd9e3;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .field span {
+      width: 48px;
+      height: 48px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #0b5fa5;
+    }
+
+    .field input {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 14px;
+      font-size: 15px;
+    }
+
+    .show {
+      padding: 0 14px;
+      font-size: 14px;
+      color: #0b5fa5;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* INFO */
+    .info {
+      margin: 20px 0 26px;
+      font-size: 15px;
+    }
+
+    .info strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .info ul {
+      padding-left: 18px;
+    }
+
+    .info li {
+      margin-bottom: 4px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 14px;
+    }
+
+    .btn.primary {
+      background: #0b5fa5;
+      color: #ffffff;
+    }
+
+    .btn.secondary {
+      background: #0b6fc0;
+      color: #ffffff;
+    }
+
+    .btn:hover {
+      filter: brightness(1.1);
+    }
+
+    /* FOOTER */
+    .help {
+      text-align: center;
+      font-size: 14px;
+      color: #5b6f82;
+    }
+
+    .help a {
+      color: #0b5fa5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="login-wrapper">
+
+    <div class="top">
+      <div class="logo">
+        <div class="drone-icon">🚁</div>
+        <h1>TECH CONTROL</h1>
+      </div>
+      <p>Sistema de Gestión de Logística de Drones</p>
+    </div>
+
+    <h2>Inicio de Sesión</h2>
+
+    <div class="field">
+      <span>👤</span>
+      <input type="text" placeholder="Usuario">
+    </div>
+
+    <div class="field">
+      <span>🔒</span>
+      <input type="password" placeholder="Contraseña">
+      <div class="show">Mostrar</div>
+    </div>
+
+    <div class="info">
+      <strong>Funciones principales</strong>
+      <ul>
+        <li>Gestión de usuarios, roles, drones, inventarios</li>
+      </ul>
+    </div>
+
+    <button class="btn primary">REGISTRO</button>
+    <button class="btn secondary">INGRESO</button>
+
+    <div class="help">
+      ¿Necesitas ayuda? <a href="#">Contactar soporte</a>
+    </div>
+
+  </div>
+
+</body>
+</html>

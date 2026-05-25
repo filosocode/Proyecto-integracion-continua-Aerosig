@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Tech Control</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(12, 24, 44, 0.75), rgba(12, 24, 44, 0.75)),
+        url("https://cdn.discordapp.com/attachments/877339127165620225/1470328699395244224/ciudad-por-la-noche-estilo-anime-5480.png?ex=698ae5cf&is=6989944f&hm=50b86713cfb846e70be29c1dc1513798c6ec91e03437aa4b81e43128d6f9edb7&");
+      background-size: cover;
+      background-position: center;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .screen {
+      width: 100%;
+      max-width: 1100px;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    /* LOGO */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 40px;
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+      background: #f7931e;
+      border-radius: 50%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 5px;
+      padding: 8px;
+    }
+
+    .logo-icon span {
+      background: #0c182c;
+      border-radius: 50%;
+    }
+
+    .logo-text {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #e8ebf1;
+    }
+
+   
+    .welcome {
+      font-size: 22px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .title {
+      font-size: 56px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .title .white {
+      color: #ffffff;
+    }
+
+    .title .orange {
+      color: #f7931e;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      opacity: 0.85;
+      margin-bottom: 50px;
+    }
+
+    
+    .drone {
+      max-width: 620px;
+      margin: 0 auto 60px;
+    }
+
+    .drone img {
+      width: 100%;
+      filter: drop-shadow(0 25px 45px rgba(0,0,0,0.6));
+    }
+
+    
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      min-width: 240px;
+      padding: 16px 0;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn.primary {
+      background: linear-gradient(180deg, #6a8cff, #3e5bd8);
+      color: #ffffff;
+    }
+
+    .btn.primary:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 2px solid rgba(255,255,255,0.4);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 40px;
+      }
+      .drone {
+        max-width: 420px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="screen">
+
+    <div class="logo">
+      <div class="logo-icon">
+        <span></span><span></span>
+        <span></span><span></span>
+      </div>
+      <div class="logo-text">techcontrol</div>
+    </div>
+
+    <div class="welcome">¡Bienvenido a</div>
+
+    <div class="title">
+      <span class="white">TECH</span>
+      <span class="orange"> CONTROL</span>
+    </div>
+
+    <div class="subtitle">
+      Sistema de Gestión de Logística de Drones
+    </div>
+
+    <div class="drone">
+      <img src="https://cdn.discordapp.com/attachments/877339127165620225/1470332132768612372/ChatGPT_Image_9_feb_2026_03_14_48_a.m..png?ex=698ae901&is=69899781&hm=339ef9aec3c68b94f89b6f5daad7ce9ef749fa883c230e7793c9cf82fba4299a&" alt="Drone">
+    </div>
+
+    <div class="buttons">
+      <button class="btn primary">Iniciar Sesión</button>
+      <button class="btn secondary">Contactar Soporte</button>
+    </div>
+
+  </div>
+</body>
+</html>

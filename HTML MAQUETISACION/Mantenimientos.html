@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechControl - Mantenimiento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-overlay: rgba(13, 22, 35, 0.85);
+            --bg-input: rgba(255, 255, 255, 0.05);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-blue: #0ea5e9; 
+            --primary-dark: #0284c7;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            
+            background-image: url('https://images.unsplash.com/photo-1519501025264-65ba15a82390?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            overflow: hidden;
+        }
+
+       
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 100%);
+            z-index: -1;
+        }
+
+        /* --- HEADER / LOGO --- */
+        .app-header {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .app-header i { color: #f97316; } /* Icono naranja */
+
+        /* Drone flotante decorativo */
+        .drone-decoration {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 200px;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
+        }
+
+        /* --- MAIN CONTAINER --- */
+        .modal-container {
+            width: 900px;
+            height: 85vh; /* Ocupa buena parte de la altura */
+            background: rgba(20, 30, 48, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header { margin-bottom: 30px; }
+        .modal-header h1 { font-size: 1.8rem; font-weight: 500; margin-bottom: 5px; }
+        .modal-header p { color: var(--text-muted); font-size: 1rem; }
+
+        /* --- LAYOUT GRID --- */
+        .form-layout {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr; /* Columna Izq más ancha */
+            gap: 40px;
+            flex: 1;
+            overflow-y: auto; /* Scroll si es necesario */
+            padding-right: 10px; /* Espacio para scrollbar */
+        }
+
+        /* Scrollbar personalizado */
+        .form-layout::-webkit-scrollbar { width: 6px; }
+        .form-layout::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+        /* --- FORM STYLES --- */
+        .form-group { margin-bottom: 20px; }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .input-wrapper {
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .input-wrapper:hover { background: rgba(255,255,255,0.08); }
+        .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
+            background: transparent;
+            border: none;
+            color: white;
+            width: 100%;
+            font-size: 0.95rem;
+            outline: none;
+            resize: none;
+        }
+        
+        /* Select personalizado visualmente */
+        select option { background: var(--bg-dark); }
+        
+        .date-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .time-picker {
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: var(--bg-input);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        /* Checkboxes Section */
+        .checkbox-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+        
+        /* Custom Checkbox */
+        .custom-check {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 1px solid var(--primary-blue);
+            background: rgba(14, 165, 233, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+        }
+        .custom-check.checked { background: var(--primary-blue); }
+
+        .add-component-btn {
+            margin-top: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px dashed var(--border-color);
+            color: var(--text-muted);
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .add-component-btn:hover { color: white; border-color: white; }
+
+        /* --- RIGHT SIDE (FILES) --- */
+        .right-panel h3 { font-size: 1rem; margin-bottom: 15px; font-weight: 500; }
+        
+        .btn-upload {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.8) 0%, rgba(2, 132, 199, 0.8) 100%);
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        .btn-upload:hover { filter: brightness(1.1); }
+
+        .file-list { display: flex; flex-direction: column; gap: 10px; }
+        
+        .file-item {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .file-icon {
+            width: 35px;
+            height: 35px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        .file-info { flex: 1; overflow: hidden; }
+        .file-name { font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+        .file-size { font-size: 0.7rem; color: var(--text-muted); }
+        .file-action { color: var(--text-muted); cursor: pointer; font-size: 0.8rem; }
+        .file-action:hover { color: #ef4444; }
+
+        /* --- FOOTER BUTTONS --- */
+        .modal-footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+        .btn-cancel {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+        .btn-cancel:hover { background: rgba(255,255,255,0.05); }
+        
+        .btn-save {
+            background: var(--primary-blue);
+            border: none;
+            color: white;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+        }
+        .btn-save:hover { background: var(--primary-dark); }
+
+    </style>
+</head>
+<body>
+
+    <div class="app-header">
+        <i class="fa-solid fa-fan"></i>
+        techcontrol
+    </div>
+
+    <img src="https://pngimg.com/d/drone_PNG92.png" class="drone-decoration" alt="Drone">
+
+    <div class="modal-container">
+        
+        <div class="modal-header">
+            <h1>Mantenimiento</h1>
+            <p>DR-003 - DJI Mavic 3</p>
+        </div>
+
+        <div class="form-layout">
+            
+            <div class="left-panel">
+                
+                <div class="form-group">
+                    <label>Tipo de Mantenimiento</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-wrench" style="color: var(--text-muted); margin-right: 10px;"></i>
+                        <select>
+                            <option>Preventivo</option>
+                            <option>Correctivo</option>
+                            <option>Inspección Rutinaria</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Fecha de mantenimiento</label>
+                    <div class="date-row">
+                        <div class="input-wrapper" style="flex: 1;">
+                            <i class="fa-regular fa-calendar" style="color: var(--text-muted); margin-right: 10px;"></i>
+                            <input type="text" value="24 abr 2024">
+                        </div>
+                        <div class="time-picker">
+                            <i class="fa-regular fa-clock" style="color: var(--text-muted); font-size: 0.8rem;"></i>
+                            <span>22</span>
+                            <i class="fa-solid fa-chevron-down" style="font-size: 0.7rem; margin-left: 3px;"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Horas de Vuelo</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-clock" style="color: var(--text-muted); margin-right: 10px;"></i>
+                        <select>
+                            <option>20 horas</option>
+                            <option>25 horas</option>
+                            <option>30 horas</option>
+                        </select>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.8rem; color: var(--text-muted);"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <div class="input-wrapper" style="align-items: flex-start;">
+                        <textarea rows="3" placeholder="Descripción del mantenimiento realizado, acciones tomadas y observaciones."></textarea>
+                        <i class="fa-solid fa-pen" style="color: var(--text-muted); margin-top: 5px; font-size: 0.8rem;"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Componentes Revisados</label>
+                    <div class="checkbox-grid">
+                        <div class="checkbox-item">
+                            <div class="custom-check checked"><i class="fa-solid fa-check"></i></div>
+                            <span>Hélices</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="custom-check checked"><i class="fa-solid fa-check"></i></div>
+                            <span>Motores</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="custom-check checked"><i class="fa-solid fa-check"></i></div>
+                            <span>Batería</span>
+                        </div>
+                        <div class="checkbox-item">
+                            <div class="custom-check checked"><i class="fa-solid fa-check"></i></div>
+                            <span>Cámaras y sensores</span>
+                        </div>
+                    </div>
+                    <button class="add-component-btn">
+                        <i class="fa-solid fa-plus"></i> Agregar Componente Revisado
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="right-panel">
+                <h3>Archivos Adjuntos</h3>
+                
+                <button class="btn-upload">
+                    <i class="fa-solid fa-plus"></i> Adjuntar Archivos
+                </button>
+
+                <div class="file-list">
+                    <div class="file-item">
+                        <div class="file-icon" style="color: #ef4444;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div class="file-info">
+                            <span class="file-name">reporte_insp_final.pdf</span>
+                            <span class="file-size">145 KB</span>
+                        </div>
+                        <div class="file-action"><i class="fa-solid fa-ellipsis-vertical"></i></div>
+                    </div>
+
+                    <div class="file-item">
+                        <div class="file-icon" style="color: #3b82f6;">
+                            <i class="fa-solid fa-image"></i>
+                        </div>
+                        <div class="file-info">
+                            <span class="file-name">fotos_revision1.jpg</span>
+                            <span class="file-size">1.3 MB</span>
+                        </div>
+                        <div class="file-action">Eliminar</div>
+                    </div>
+                    
+                     <div class="file-item" style="opacity: 0.6;">
+                        <div class="file-icon" style="color: #ef4444;">
+                            <i class="fa-solid fa-file-pdf"></i>
+                        </div>
+                        <div class="file-info">
+                            <span class="file-name">bitacora_vuelo_abr.pdf</span>
+                            <span class="file-size">45 KB</span>
+                        </div>
+                        <div class="file-action"><i class="fa-solid fa-sort"></i></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-cancel">Cancelar</button>
+            <button class="btn btn-save">Guardar</button>
+        </div>
+
+    </div>
+
+</body>
+</html>
