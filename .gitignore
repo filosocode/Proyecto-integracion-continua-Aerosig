@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+backend/venv/
+backend/*.log
+*.db
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# Documentación local y archivos académicos
+DOCUMENTACION/
+INTEGRACI?N CONTINUA-*/
+*.rar
+*.docx
+*.pdf
+
+# Sistema
+.DS_Store
+Thumbs.db

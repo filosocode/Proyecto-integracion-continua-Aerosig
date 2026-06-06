@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: aerosig-backend
+    ports:
+      - "8000:8000"
+    networks:
+      - aerosig-network
+
+  frontend:
+    build: ./frontend
+    container_name: aerosig-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - aerosig-network
+
+networks:
+  aerosig-network:
+    driver: bridge
