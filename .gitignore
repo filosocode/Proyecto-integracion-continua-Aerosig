@@ -11,12 +11,39 @@ frontend/node_modules/
 frontend/dist/
 frontend/.env
 
-# Documentación local y archivos académicos
+# Documentación académica y carpetas locales
 DOCUMENTACION/
 INTEGRACI?N CONTINUA-*/
+HTML MAQUETISACION/
+HTML MAQUETISACION.rar
+evidencias-semana5/
+
+# Archivos de documentos
 *.rar
 *.docx
+*.doc
 *.pdf
+*.txt
+*.pptx
+*.xlsx
+
+# Imágenes y pantallazos sueltos en la raíz
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.svg
+
+# Excepciones — mantener assets del frontend
+!frontend/src/assets/*.png
+!frontend/src/assets/*.jpg
+!frontend/src/assets/*.svg
+!frontend/public/*.svg
+!frontend/public/*.png
+
+# Carpetas auxiliares de Word/HTML
+*.files/
 
 # Sistema
 .DS_Store
