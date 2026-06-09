@@ -25,6 +25,7 @@ pipeline {
                 echo 'Levantando contenedores con Docker Compose...'
                 sh 'docker compose up -d --build'
                 echo 'AeroSIG desplegado exitosamente.'
+                echo 'Pipeline CI/CD finalizado correctamente.'
             }
         }
     }
