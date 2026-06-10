@@ -30,6 +30,7 @@ pipeline {
                 sh 'docker-compose up -d --build backend frontend'
                 echo 'AeroSIG desplegado exitosamente.'
                 echo 'Pipeline CI/CD finalizado correctamente.'
+                echo 'Trigger pollSCM activo - deteccion automatica de cambios.'
             }
         }
     }
