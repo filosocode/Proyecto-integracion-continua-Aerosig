@@ -14,6 +14,12 @@ pipeline {
                 sh 'docker build -t aerosig-backend ./backend'
             }
         }
+        stage('Tests') {
+            steps {
+                echo 'Ejecutando pruebas del backend...'
+                sh 'exit 1'
+            }
+        }
         stage('Build Frontend') {
             steps {
                 echo 'Construyendo imagen Docker del frontend...'
