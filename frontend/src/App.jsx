@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import Login from './components/Login';
 import Layout from './components/Layout';
@@ -8,21 +8,17 @@ import DronesPage from './components/DronesPage';
 import UsersPage from './components/UsersPage';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
+  const [currentUser, setCurrentUser] = useState(() => {
     const token = localStorage.getItem('aerosig_token');
     const stored = localStorage.getItem('aerosig_user');
     if (token && stored) {
-      try {
-        setCurrentUser(JSON.parse(stored));
-        setIsAuthenticated(true);
-      } catch {
-        localStorage.clear();
-      }
+      try { return JSON.parse(stored); } catch { localStorage.clear(); }
     }
-  }, []);
+    return null;
+  });
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => !!localStorage.getItem('aerosig_token')
+  );
 
   const handleLogin = async (token) => {
     localStorage.setItem('aerosig_token', token);

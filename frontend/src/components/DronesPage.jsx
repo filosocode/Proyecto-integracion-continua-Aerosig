@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import axios from 'axios';
 import { Plus, Pencil, Trash2, Search, Plane, AlertTriangle, Wrench, X } from 'lucide-react';
@@ -20,7 +20,6 @@ const emptyForm = {
 
 const DronesPage = () => {
   const [drones, setDrones]         = useState([]);
-  const [filtered, setFiltered]     = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editing, setEditing]       = useState(null);
   const [form, setForm]             = useState(emptyForm);
@@ -40,7 +39,7 @@ const DronesPage = () => {
 
   useEffect(() => { fetchDrones(); }, []);
 
-  useEffect(() => {
+  const filtered = useMemo(() => {
     let result = drones;
     if (filterStatus) result = result.filter(d => d.status === filterStatus);
     if (search) {
@@ -52,7 +51,7 @@ const DronesPage = () => {
         (d.pilot || '').toLowerCase().includes(q)
       );
     }
-    setFiltered(result);
+    return result;
   }, [drones, filterStatus, search]);
 
   const openCreate = () => {
