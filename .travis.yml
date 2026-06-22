@@ -1,0 +1,8 @@
+language: minimal
+
+services:
+  - docker
+
+script:
+  - docker build -t aerosig-backend ./backend
+  - docker build -t aerosig-frontend ./frontend
