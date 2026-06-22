@@ -1,0 +1,37 @@
+name: AeroSIG CI Pipeline
+
+on:
+  push:
+    branches: [ develop, main, feature/travis ]
+  pull_request:
+    branches: [ develop, main ]
+
+jobs:
+  build:
+    name: Build Docker Images
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Construir imagen Docker del backend
+        run: docker build -t aerosig-backend ./backend
+
+      - name: Construir imagen Docker del frontend
+        run: docker build -t aerosig-frontend ./frontend
+
+  test:
+    name: Ejecutar pruebas unitarias
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias del backend
+        run: pip install -r backend/requirements.txt
+
+      - name: Ejecutar tests con pytest
+        run: cd backend && pytest test_api.py -v
