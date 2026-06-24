@@ -2,6 +2,14 @@
 
 Aplicación web para la administración y seguimiento de flotas de drones, desarrollada como proyecto del módulo de Integración Continua — Politécnico Grancolombiano.
 
+## Estado del Pipeline CI/CD — Entrega 3
+
+| Herramienta | Estado | Rama de integración |
+|---|---|---|
+| Jenkins | ✅ Pipeline activo — 5 stages (Checkout, Build Backend, Build Frontend, Tests, Deploy) | develop |
+| Travis CI (GitHub Actions) | [![AeroSIG CI Pipeline](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/ci.yml/badge.svg)](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/ci.yml) | feature/travis |
+| Codeship (GitHub Actions) | [![AeroSIG Codeship Pipeline](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/codeship.yml/badge.svg)](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/codeship.yml) | feature/codeship |
+
 ---
 
 ## Integrantes del equipo

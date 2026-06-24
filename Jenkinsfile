@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        disableConcurrentBuilds()
+    }
+
     triggers {
         pollSCM('H/5 * * * *')
     }
@@ -35,6 +39,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Levantando contenedores con Docker Compose...'
+                sh 'docker rm -f aerosig-backend aerosig-frontend || true'
                 sh 'docker-compose up -d --build backend frontend'
                 echo 'AeroSIG desplegado exitosamente.'
                 echo 'Pipeline CI/CD finalizado correctamente.'
