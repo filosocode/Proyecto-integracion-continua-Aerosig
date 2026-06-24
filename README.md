@@ -2,6 +2,14 @@
 
 Aplicación web para la administración y seguimiento de flotas de drones, desarrollada como proyecto del módulo de Integración Continua — Politécnico Grancolombiano.
 
+## Estado del Pipeline CI/CD — Entrega 3
+
+| Herramienta | Estado | Rama de integración |
+|---|---|---|
+| Jenkins | ✅ Pipeline activo — 5 stages (Checkout, Build Backend, Build Frontend, Tests, Deploy) | develop |
+| Travis CI | ⏳ En configuración | feature/travis |
+| Codeship | ✅ Configurado — Setup y Test Commands definidos | feature/codeship |
+
 ---
 
 ## Integrantes del equipo
