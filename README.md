@@ -7,8 +7,8 @@ Aplicación web para la administración y seguimiento de flotas de drones, desar
 | Herramienta | Estado | Rama de integración |
 |---|---|---|
 | Jenkins | ✅ Pipeline activo — 5 stages (Checkout, Build Backend, Build Frontend, Tests, Deploy) | develop |
-| Travis CI | ⏳ En configuración | feature/travis |
-| Codeship | ✅ Configurado — Setup y Test Commands definidos | feature/codeship |
+| Travis CI (GitHub Actions) | [![AeroSIG CI Pipeline](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/ci.yml/badge.svg)](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/ci.yml) | feature/travis |
+| Codeship (GitHub Actions) | [![AeroSIG Codeship Pipeline](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/codeship.yml/badge.svg)](https://github.com/filosocode/Proyecto-integracion-continua-Aerosig/actions/workflows/codeship.yml) | feature/codeship |
 
 ---
 
